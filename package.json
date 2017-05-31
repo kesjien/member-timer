@@ -9,7 +9,8 @@
   "dependencies": {
     "lottie-react-native": "^1.1.1",
     "react": "16.0.0-alpha.6",
-    "react-native": "0.44.0"
+    "react-native": "0.44.0",
+    "react-native-background-timer": "^1.0.2"
   },
   "devDependencies": {
     "babel-jest": "20.0.1",
@@ -19,5 +20,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
   }
 }
