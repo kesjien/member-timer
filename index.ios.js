@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import Main from './main';
+import Main from './components/main';
 import {
   AppRegistry,
   StyleSheet,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#fff',
   },
   welcome: {
     fontSize: 20,

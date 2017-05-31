@@ -16,8 +16,8 @@ export default class BasicExample extends React.Component {
       loop: true,
       duration: 3000,
     }).start(() => {
-      this.setState({progress: new Animated.Value(0)})
-      this.loadAnimation();
+      // this.setState({progress: new Animated.Value(0)})
+      // this.loadAnimation();
     });
   }
 
@@ -34,7 +34,7 @@ export default class BasicExample extends React.Component {
           height: 400,
         }}
         loop={true}
-        source={require('./pencil_write.json')}
+        source={require('../pencil_write.json')}
         progress={this.state.progress}
       />
     );
