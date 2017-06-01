@@ -35,17 +35,25 @@ export default class Main extends React.Component {
 
       if (diff <= 0) {
         start = Date.now() + 1000;
+        BackgroundTimer.clearInterval(intervalId);
       }
-
     }, 1000);
   }
 
   render() {
     return (
       <View style={{justifyContent: 'center'}}>
-        <Text onPress={this.startTimer} style={{ fontFamily: 'digital-7', textAlign:'center', fontSize: 80 }}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
+        <Text onPress={this.startTimer} style={styles.timer}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
         <Pencil/>
       </View>
     );
+  }
+}
+
+const styles = {
+  timer: {
+    fontFamily: 'digital-7',
+    textAlign:'center',
+    fontSize: 80
   }
 }
