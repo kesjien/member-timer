@@ -14,12 +14,9 @@ export default class Main extends React.Component {
     };
   }
 
-
-
   startTimer() {
     let diff, minutes, seconds, start = Date.now();
     const intervalId = BackgroundTimer.setInterval(() => {
-      
       diff = 30 - (((Date.now() - start) / 1000) | 0);
 
       minutes = (diff / 60) | 0;
