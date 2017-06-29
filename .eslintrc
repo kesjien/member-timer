@@ -1,0 +1,37 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended" ],
+  "plugins": [ "class-property", "react-native", "react" ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "indent": ["error", 2],
+    "no-const-assign": "warn",
+    "no-this-before-super": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "no-unused-vars": "warn",
+    "constructor-super": "warn",
+    "valid-typeof": "warn",
+    "no-console": ["error", { "allow": ["warn", "log", "error"]}]
+  },
+  "globals": {
+    "Answers": true,
+    "FlurryAnalytics": true,
+    "Crashlytics": true
+  }
+}

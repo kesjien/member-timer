@@ -22,7 +22,6 @@ export default class BasicExample extends React.Component {
   }
 
   componentDidMount() {
-    
     this.loadAnimation();
   }
 
@@ -34,7 +33,7 @@ export default class BasicExample extends React.Component {
           height: 400,
         }}
         loop={true}
-        source={require('../pencil_write.json')}
+        source={require('../assets/animation/pencil_write.json')}
         progress={this.state.progress}
       />
     );
