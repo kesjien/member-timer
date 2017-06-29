@@ -23,7 +23,8 @@ export default class BasicExample extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.startAnimation && nextProps.startAnimation != this.props.startAnimation) {
+    console.log(this.state.progress, 'here')
+    if (nextProps.startAnimation && nextProps.startAnimation != this.props.startAnimation && this.state.progress._value === 0) {
       this.loadAnimation();
     }
   }
