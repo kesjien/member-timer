@@ -24,7 +24,7 @@ export default class BasicExample extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.startAnimation && nextProps.startAnimation != this.props.startAnimation) {
-      this.loadAnimation(nextProps.startAnimation);
+      this.loadAnimation();
     }
   }
 
@@ -48,5 +48,5 @@ export default class BasicExample extends React.Component {
 }
 
 BasicExample.propTypes = {
-  startAnimation: PropTypes.string
+  startAnimation: PropTypes.bool
 };
