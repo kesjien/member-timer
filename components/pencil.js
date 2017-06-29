@@ -1,7 +1,7 @@
 import React from 'react';
 import { Animated } from 'react-native';
 import Animation from 'lottie-react-native';
-
+import PropTypes from 'prop-types';
 export default class BasicExample extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +10,7 @@ export default class BasicExample extends React.Component {
     };
   }
 
-  loadAnimation(animation) {
+  loadAnimation() {
     Animated.timing(this.state.progress, {
       toValue: 1,
       duration: 3000,
@@ -46,3 +46,7 @@ export default class BasicExample extends React.Component {
     );
   }
 }
+
+BasicExample.propTypes = {
+  startAnimation: PropTypes.string
+};

@@ -1,17 +1,15 @@
 import React from 'react';
-import { Animated, Text, View, Vibration } from 'react-native';
+import { Text, View, Vibration } from 'react-native';
 import Pencil from './pencil';
 import BackgroundTimer from 'react-native-background-timer';
-
-
 export default class Main extends React.Component {
   constructor() {
     super();
     this.startTimer = this.startTimer.bind(this);
     this.state = {
-        timerMinutes: '00',
-        timerSeconds: '00',
-        startAnimation: false,
+      timerMinutes: '00',
+      timerSeconds: '00',
+      startAnimation: false,
     };
   }
 
