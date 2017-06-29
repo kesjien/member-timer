@@ -10,15 +10,22 @@ export default class BasicExample extends React.Component {
     };
   }
 
-  loadAnimation() {
+  loadAnimation(animation) {
     Animated.timing(this.state.progress, {
       toValue: 1,
-      loop: true,
       duration: 3000,
     }).start(() => {
-      // this.setState({progress: new Animated.Value(0)})
-      // this.loadAnimation();
+      this.setState({progress: new Animated.Value(0)})
+      if (this.props.startAnimation) {
+        this.loadAnimation();
+      }
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.startAnimation && nextProps.startAnimation != this.props.startAnimation) {
+      this.loadAnimation(nextProps.startAnimation);
+    }
   }
 
   componentDidMount() {

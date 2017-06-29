@@ -10,11 +10,15 @@ export default class Main extends React.Component {
     this.startTimer = this.startTimer.bind(this);
     this.state = {
         timerMinutes: '00',
-        timerSeconds: '00'
+        timerSeconds: '00',
+        startAnimation: false,
     };
   }
 
   startTimer() {
+    this.setState({
+      startAnimation: true
+    })
     let diff, minutes, seconds, start = Date.now();
     const intervalId = BackgroundTimer.setInterval(() => {
       diff = 30 - (((Date.now() - start) / 1000) | 0);
@@ -33,6 +37,9 @@ export default class Main extends React.Component {
       if (diff <= 0) {
         start = Date.now() + 1000;
         BackgroundTimer.clearInterval(intervalId);
+        this.setState({
+          startAnimation: false
+        })
         Vibration.vibrate([500, 500, 500, 500, 500, 500]);
       }
     }, 1000);
@@ -42,7 +49,7 @@ export default class Main extends React.Component {
     return (
       <View style={{justifyContent: 'center'}}>
         <Text onPress={this.startTimer} style={styles.timer}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
-        <Pencil/>
+        <Pencil startAnimation={this.state.startAnimation} />
       </View>
     );
   }
