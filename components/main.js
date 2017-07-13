@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Vibration } from 'react-native';
 import Pencil from './pencil';
-import TimeExtend from './timeExtend';
+import TimeExtender from './timeExtender';
 import BackgroundTimer from 'react-native-background-timer';
 import PropTypes from 'prop-types';
 
@@ -11,6 +11,7 @@ export default class Main extends React.Component {
     this.intervalId = 0;
     this.diff = 0;
     this.startTimer = this.startTimer.bind(this);
+    this.extendTime = this.extendTime.bind(this);
     const seconds = (props.time % 60) | 0;
     const minutes = (props.time / 60) | 0;
     this.state = {
@@ -59,14 +60,25 @@ export default class Main extends React.Component {
     })
   }
 
+  extendTime(time) {
+    const diff = this.state.diff + time;
+    const seconds = (diff % 60) | 0;
+    const minutes = (diff / 60) | 0;
+    this.setState({
+      diff: diff,
+      timerMinutes: (minutes < 10) ? `0${minutes}` : minutes | '00',
+      timerSeconds: (seconds < 10) ? `0${seconds}` : seconds | '00',
+    })
+  }
+
   render() {
     return (
       <View style={{justifyContent: 'center'}}>
         <Text onPress={this.startTimer} style={styles.timer}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
         <View style={styles.timerConfigurations}>
           <View style={styles.configurationsBox}>
-            <TimeExtend time={300}/>
-            <TimeExtend time={600}/>
+            <TimeExtender extendTime={this.extendTime} time={300}/>
+            <TimeExtender extendTime={this.extendTime} time={600}/>
             <Text onPress={this.startTimer} style={styles.timerSmall}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
           </View>
         </View>
@@ -90,7 +102,8 @@ const styles = {
   },
   configurationsBox: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    paddingTop: 20
   }
 }
 Main.propTypes = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
+import { Text, TouchableHighlight } from 'react-native';
 export default class BasicExample extends React.Component {
   constructor(props) {
     super();
@@ -13,7 +13,9 @@ export default class BasicExample extends React.Component {
   }
   render() {
     return (
-      <Text style={styles.timerSmall}>+{this.state.minutes}:{this.state.seconds}</Text>
+      <TouchableHighlight underlayColor={"#ccc"} onPress={() => this.props.extendTime(this.props.time)}>
+        <Text style={styles.timerSmall}>+{this.state.minutes}:{this.state.seconds}</Text>
+      </TouchableHighlight>
     );
   }
 }
@@ -23,10 +25,10 @@ const styles = {
     fontFamily: 'digital-7',
     textAlign:'center',
     fontSize: 20,
-    paddingTop: 20
   },
 }
 
 BasicExample.propTypes = {
-  time: PropTypes.number
+  time: PropTypes.number,
+  extendTime: PropTypes.func
 };
