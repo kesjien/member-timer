@@ -17,7 +17,7 @@ export default class memberTimer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Main />
+        <Main time={600} />
       </View>
     );
   }

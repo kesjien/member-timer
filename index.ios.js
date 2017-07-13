@@ -9,7 +9,6 @@ import Main from './components/main';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
   View
 } from 'react-native';
 
@@ -17,7 +16,7 @@ export default class memberTimer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Main />
+        <Main time={609} />
       </View>
     );
   }
