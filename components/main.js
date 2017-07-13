@@ -1,18 +1,21 @@
 import React from 'react';
 import { Text, View, Vibration } from 'react-native';
 import Pencil from './pencil';
+import TimeExtend from './timeExtend';
 import BackgroundTimer from 'react-native-background-timer';
 import PropTypes from 'prop-types';
+
 export default class Main extends React.Component {
   constructor(props) {
     super();
     this.intervalId = 0;
     this.diff = 0;
     this.startTimer = this.startTimer.bind(this);
-    const seconds = (props.time % 60);
+    const seconds = (props.time % 60) | 0;
+    const minutes = (props.time / 60) | 0;
     this.state = {
       diff: props.time,
-      timerMinutes: (props.time / 60) | '00',
+      timerMinutes: (minutes < 10) ? `0${minutes}` : minutes | '00',
       timerSeconds: (seconds < 10) ? `0${seconds}` : seconds | '00',
       startAnimation: false,
     };
@@ -62,8 +65,8 @@ export default class Main extends React.Component {
         <Text onPress={this.startTimer} style={styles.timer}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
         <View style={styles.timerConfigurations}>
           <View style={styles.configurationsBox}>
-            <Text onPress={this.startTimer} style={styles.timerSmall}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
-            <Text onPress={this.startTimer} style={styles.timerSmall}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
+            <TimeExtend time={300}/>
+            <TimeExtend time={600}/>
             <Text onPress={this.startTimer} style={styles.timerSmall}>{this.state.timerMinutes}:{this.state.timerSeconds}</Text>
           </View>
         </View>
@@ -78,12 +81,6 @@ const styles = {
     fontFamily: 'digital-7',
     textAlign:'center',
     fontSize: 80
-  },
-  timerSmall: {
-    fontFamily: 'digital-7',
-    textAlign:'center',
-    fontSize: 20,
-    paddingTop: 20
   },
   timerConfigurations: {
     borderColor: "#000",
